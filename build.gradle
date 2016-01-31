@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'jetty'
+apply plugin: 'eclipse'
+
+def defaultEncoding = 'UTF-8'
+
+httpPort = 8888
+
+ext {
+	project.version = '0.1'
+	project.group = 'schwarz.sw-works'
+	appName = 'JerseyJettySample'
+	project.description = 'sample project on Jetty with gradle for Eclipse'
+}
+
+configurations {
+	all*.exclude module: 'servlet-api'
+}
+
+repositories {
+   mavenCentral()
+   mavenLocal()
+}
+
+dependencies {
+	compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.+'
+    testCompile 'junit:junit:4.+'
+}
